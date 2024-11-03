@@ -1,71 +1,89 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5ddd5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#joinContainer, #chatContainer {
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #joinContainer {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    padding: 20px;
 }
 
 #nameInput, #joinButton {
-    padding: 10px;
-    margin: 5px;
+    padding: 12px;
+    margin: 8px 0;
+    width: 100%;
     border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
 #chatContainer {
     display: none;
-    flex: 1;
     flex-direction: column;
-    background: white;
-    height: 100vh;
+    height: 100%;
 }
 
 #messages {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     overflow-y: auto;
+    background: #e5ddd5;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: #e5ddd5;
 }
 
 .message {
     max-width: 60%;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
-    position: relative;
     font-size: 14px;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
 }
 
 .message.sent {
-    background-color: #DCF8C6;
+    background-color: #dcf8c6;
     align-self: flex-end;
     border-bottom-right-radius: 0;
 }
 
 .message.received {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     align-self: flex-start;
     border-bottom-left-radius: 0;
 }
 
 .timestamp {
     font-size: 10px;
-    color: gray;
-    display: block;
-    text-align: right;
+    color: #999;
     margin-top: 5px;
+    text-align: right;
+    display: block;
 }
 
 #inputContainer {
@@ -77,32 +95,36 @@ body {
 
 #messageInput {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 #sendButton {
-    margin-left: 10px;
-    padding: 10px;
+    padding: 12px;
     background-color: #34b7f1;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 #inviteLink {
     display: none;
-    margin: 5px;
-    padding: 5px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 #copyButton {
     display: none;
-    padding: 5px;
+    padding: 10px;
+    margin: 10px;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #34b7f1;
     color: white;
+    cursor: pointer;
 }
