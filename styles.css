@@ -7,8 +7,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -19,29 +17,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 100vh;
 }
 
-#joinContainer h2 {
-    margin-bottom: 20px;
-}
-
-#nameInput {
+#nameInput, #joinButton {
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    margin: 5px;
     border-radius: 5px;
-    width: 300px;
-}
-
-#joinButton {
-    padding: 10px;
-    border: none;
-    background: #5cb85c;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
 }
 
 #chatContainer {
@@ -49,16 +31,13 @@ body {
     flex-direction: column;
     height: 100vh;
     width: 100%;
-    border: 1px solid #ccc;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #e5ddd5;
 }
 
 #messages {
     flex: 1;
-    padding: 10px;
     overflow-y: auto;
-    height: calc(100% - 140px); /* Adjusted to make room for input and invite containers */
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -98,38 +77,34 @@ body {
     border-top: 1px solid #ddd;
 }
 
-
 #messageInput {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 #sendButton {
-    padding: 10px;
-    border: none;
-    background: #5cb85c;
-    color: white;
-    cursor: pointer;
     margin-left: 10px;
+    padding: 10px;
+    background-color: #34b7f1;
+    color: white;
+    border: none;
     border-radius: 5px;
-    font-size: 16px;
+    cursor: pointer;
 }
 
 #inviteContainer {
     display: flex;
     padding: 10px;
-    background: #f9f9f9;
-    border-top: 1px solid #ccc;
-    justify-content: center;
+    background: #f1f1f1;
+    border-top: 1px solid #ddd;
 }
 
 #inviteLink {
-    width: 80%;
-    padding: 5px;
-    text-align: center;
-    border: 1px solid #ccc;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     margin-right: 10px;
 }
