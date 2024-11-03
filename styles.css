@@ -94,11 +94,10 @@ body {
 #inputContainer {
     display: flex;
     padding: 10px;
-    background: #f9f9f9;
-    border-top: 1px solid #ccc;
-    position: sticky;
-    bottom: 0;
+    background: #f1f1f1;
+    border-top: 1px solid #ddd;
 }
+
 
 #messageInput {
     flex: 1;
