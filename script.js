@@ -1,12 +1,11 @@
-
 $(document).ready(function() {
     let userName;
-    let roomID = Math.random().toString(36).substr(2, 9); // Generate a random room ID
+    let roomID = Math.random().toString(36).substr(2, 9);
 
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('room')) {
-        roomID = urlParams.get('room'); // Get room ID from URL
-        userName = prompt("Enter your name to join the chat:"); // Prompt for name
+        roomID = urlParams.get('room');
+        userName = prompt("Enter your name to join the chat:");
         if (userName) {
             joinChat();
         }
@@ -26,14 +25,11 @@ $(document).ready(function() {
     });
 
     $('#messageInput').on('keypress', function(e) {
-        if (e.which === 13) { // Enter key
-            sendMessage();
-        }
+        if (e.which === 13) sendMessage();
     });
 
     $('#copyButton').on('click', function() {
-        const inviteLink = $('#inviteLink').val();
-        navigator.clipboard.writeText(inviteLink).then(() => {
+        navigator.clipboard.writeText($('#inviteLink').val()).then(() => {
             alert('Invite link copied to clipboard!');
         });
     });
@@ -41,10 +37,10 @@ $(document).ready(function() {
     function joinChat() {
         $('#joinContainer').hide();
         $('#chatContainer').show();
-        $('#messages').append('<div><strong>' + userName + '</strong> joined the chat</div>');
+        $('#messages').append(createMessage(userName, "joined the chat", "received"));
         loadMessages();
         generateInviteLink();
-        setInterval(loadMessages, 2000); // Load messages every 2 seconds
+        setInterval(loadMessages, 2000);
     }
 
     function sendMessage() {
@@ -52,7 +48,7 @@ $(document).ready(function() {
         if (message) {
             const timestamp = new Date().toLocaleTimeString();
             const msgObject = { name: userName, message: message, timestamp: timestamp };
-            $('#messages').append('<div><strong>' + userName + ':</strong> ' + message + ' <small>(' + timestamp + ')</small></div>');
+            $('#messages').append(createMessage(userName, message, "sent", timestamp));
             $('#messageInput').val('');
             saveMessage(msgObject);
             scrollToBottom();
@@ -61,29 +57,30 @@ $(document).ready(function() {
 
     function saveMessage(msgObject) {
         let messages = JSON.parse(localStorage.getItem('chatMessages')) || {};
-        if (!messages[roomID]) {
-            messages[roomID] = [];
-        }
+        if (!messages[roomID]) messages[roomID] = [];
         messages[roomID].push(msgObject);
         localStorage.setItem('chatMessages', JSON.stringify(messages));
     }
 
     function loadMessages() {
         let messages = JSON.parse(localStorage.getItem('chatMessages')) || {};
-        $('#messages').empty(); // Clear current messages
+        $('#messages').empty();
         if (messages[roomID]) {
             messages[roomID].forEach(msg => {
-                $('#messages').append('<div><strong>' + msg.name + ':</strong> ' + msg.message + ' <small>(' + msg.timestamp + ')</small></div>');
+                $('#messages').append(createMessage(msg.name, msg.message, msg.name === userName ? 'sent' : 'received', msg.timestamp));
             });
         }
         scrollToBottom();
     }
 
     function generateInviteLink() {
-        const inviteLink = window.location.href.split('?')[0] + '?room=' + roomID; // Generate invite link
-        $('#inviteLink').val(inviteLink);
-        $('#inviteLink').show();
+        const inviteLink = window.location.href.split('?')[0] + '?room=' + roomID;
+        $('#inviteLink').val(inviteLink).show();
         $('#copyButton').show();
+    }
+
+    function createMessage(name, text, type, timestamp) {
+        return `<div class="message ${type}">${text}<span class="timestamp">${timestamp}</span></div>`;
     }
 
     function scrollToBottom() {
