@@ -37,6 +37,7 @@ body {
 #messages {
     flex: 1;
     overflow-y: auto;
+    width:400px;
     padding: 10px;
     display: flex;
     flex-direction: column;
