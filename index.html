@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<div id="joinContainer">
+    <h2>Join Chat Room</h2>
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <button id="joinButton">Join Chat</button>
+</div>
+
+<div id="chatContainer">
+    <div id="messages"></div>
+    <div id="inputContainer">
+        <input type="text" id="messageInput" placeholder="Type a message" />
+        <button id="sendButton">Send</button>
+    </div>
+    <input type="text" id="inviteLink" readonly placeholder="Invite link will appear here..." />
+    <button id="copyButton" style="display: none;">Copy Link</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
